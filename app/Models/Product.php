@@ -9,6 +9,9 @@ class Product extends Model
 {
     use HasFactory;
 
+    const BORRADOR=0;
+    const PUBLICADO=1;
+
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
     //Uno a muchos
@@ -25,14 +28,14 @@ class Product extends Model
 
     public function subcategory()
     {
-        $this->belongsTo(Subcategory::class);
+        return $this->belongsTo(Subcategory::class);
     }
 
     //Muchos a muchos
 
     public function colors()
     {
-        return $this->hasMany(Color::class);
+        return $this->belongsToMany(Color::class);
     }
 
     //Uno a muchos polimorfica

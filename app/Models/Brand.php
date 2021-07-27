@@ -8,5 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     use HasFactory;
-    protected $fillable=['name'];
+    protected $fillable = ['name'];
+
+    //Relacion muchos a muchos
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    //Uno a muchos
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
